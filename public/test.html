@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú desplegable con clic</title>
+    <style>
+        .menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            background-color: #333;
+            display: flex;
+        }
+
+        .menu > li {
+            position: relative;
+        }
+
+        .menu > li > a {
+            display: block;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: white;
+            background-color: #333;
+        }
+
+        .menu > li > a:hover {
+            background-color: #444;
+        }
+
+        .submenu {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            background-color: #444;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 200px;
+        }
+
+        .submenu li a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .submenu li a:hover {
+            background-color: #555;
+        }
+
+        /* Clase para mostrar el menú desplegable */
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <ul class="menu">
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#" id="toggle-menu">Servicios</a>
+            <ul class="submenu" id="submenu">
+                <li><a href="#">Diseño Web</a></li>
+                <li><a href="#">Desarrollo</a></li>
+                <li><a href="#">Marketing</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Contacto</a></li>
+    </ul>
+
+    <script>
+        // Obtener el elemento del menú
+        const toggleMenu = document.getElementById('toggle-menu');
+        const submenu = document.getElementById('submenu');
+
+        // Añadir un evento de clic
+        toggleMenu.addEventListener('click', function (event) {
+            event.preventDefault(); // Evita que el enlace se siga
+            submenu.classList.toggle('show'); // Alterna la clase 'show' para mostrar/ocultar el menú
+        });
+    </script>
+
+</body>
+</html>
