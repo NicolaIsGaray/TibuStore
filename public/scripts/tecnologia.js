@@ -7,3 +7,15 @@ document.querySelectorAll('.deploy-arrow').forEach(function(arrow) {
         subcategory.classList.toggle('show-sub'); // Alterna la clase 'show-sub'
     });
 });
+
+const falseBuy = document.getElementById('prueba')
+
+falseBuy.addEventListener("click", function(event) {
+    event.preventDefault();
+    Swal.fire({
+        title: "The Internet?",
+        text: "That thing is still around?",
+        icon: "question"
+      });
+})
+

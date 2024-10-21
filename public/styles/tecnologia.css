@@ -158,6 +158,10 @@
 
 .products-card {
     width: 100%; /* Asegura que el contenedor de productos ocupa todo el ancho */
+    display: flex;
+    justify-content: center;
+    position:relative;
+    bottom: 10vw;
 }
 
 .products-card ul {
