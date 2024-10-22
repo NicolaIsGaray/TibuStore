@@ -1,18 +1,37 @@
 const express = require("express");
 const app = express();
-const routes = require("./routes/index");
+const routes = require("./routes/rutas");
+
+const dotEnv = require("dotenv");
+dotEnv.config();
+
+const PORT = process.env.PORT;
+const MONGO_U = process.env.MONGO_U;
+const MONGO_P = process.env.MONGO_P;
 
 const mongoose = require("mongoose");
-const url = "mongodb+srv://nicogaray2713:tqKJjQdsKgsk04Gb@generaldata.xnxij.mongodb.net/?retryWrites=true&w=majority&appName=generalData"
+const cookieParser = require("cookie-parser");
+const url = `mongodb+srv://${MONGO_U}:${MONGO_P}@generaldata.xnxij.mongodb.net/?retryWrites=true&w=majority&appName=generalData`
 
 app.use("/", routes);
 app.use(express.json());
+app.use(cookieParser());
+
+app.use(
+    express.static("public", {
+      setHeaders: (res, path) => {
+        if (path.endsWith(".js")) {
+          res.setHeader("Content-Type", "application/javascript");
+        }
+      },
+    }),
+  );
 
 const connectToMongo = async () => {
     try {
         await mongoose.connect(url);
-        app.listen(3000, () => {
-            console.log("El servidor está escuchando en el puerto 3000 y conectado a la base de datos.");
+        app.listen(PORT, () => {
+            console.log(`El servidor está levantado en el puerto ${PORT} y conectado a la base de datos.`);
         })
     } catch (error) {
         console.log(error);
