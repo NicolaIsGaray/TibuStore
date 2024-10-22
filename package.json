@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "bootstrap": "^5.3.3",
+    "express": "^4.21.1",
+    "mongoose": "^8.7.2",
     "node": "^22.10.0",
     "sweetalert2": "^11.14.3"
   }
