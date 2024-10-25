@@ -1,3 +1,5 @@
+
+// FILTRO DE PRODUCTOS
 document.querySelectorAll('.deploy-arrow').forEach(function(arrow) {
     arrow.addEventListener('click', function(event) {
         event.preventDefault();
@@ -6,3 +8,4 @@ document.querySelectorAll('.deploy-arrow').forEach(function(arrow) {
         subcategory.classList.toggle('show-sub');
     });
 });
+
