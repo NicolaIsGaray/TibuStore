@@ -98,7 +98,6 @@
 
 
 .category-container {
-    margin-top: 8vw;
     position: relative;
     left: 8vw;
     width: 250px;
@@ -150,10 +149,12 @@
 }
 
 .products {
+    top: 12vw;
+    position: relative;
+    width: 50%;
     display: flex;
-    justify-content: center; /* Centra el contenedor de productos */
-    flex-wrap: wrap; /* Permite que los productos se envuelvan en varias filas */
-    margin: 20px; /* Espaciado externo */
+    justify-content: center;
+    margin: 0px 25vw 0px 25vw;
 }
 
 .products-card {
@@ -161,54 +162,56 @@
     display: flex;
     justify-content: center;
     position:relative;
-    bottom: 10vw;
 }
 
 .products-card ul {
-    display: flex; /* Muestra los productos en una fila */
-    justify-content: space-evenly; /* Espaciado uniforme entre los productos */
-    padding: 0; /* Elimina el padding por defecto */
-    list-style: none; /* Elimina los puntos de la lista */
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0;
+    list-style: none;
 }
 
 .products-card li {
-    margin: 10px; /* Margen entre los productos */
-    flex: 1 1 30%; /* Permite que los productos crezcan y se encojan, con un ancho base de 30% */
-    max-width: 200px; /* Ancho máximo de cada tarjeta de producto */
+    margin: 10px;
+    flex: 1 1 30%;
+    max-width: 200px;
 }
 
 .item-main {
-    border: 1px solid #ccc; /* Borde ligero alrededor de cada producto */
-    border-radius: 8px; /* Bordes redondeados */
-    overflow: hidden; /* Evita que el contenido sobresalga */
-    text-align: center; /* Centra el texto dentro de cada tarjeta */
-    padding: 10px; /* Espaciado interno */
-    background-color: #fff; /* Fondo blanco para cada tarjeta de producto */
-    transition: transform 0.2s; /* Efecto de transformación suave al hacer hover */
+    margin-right: 2vw;
+    display: flex;
+    flex-direction: column-reverse;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    padding: 10px;
+    background-color: #fff;
+    transition: transform 0.2s;
 }
 
 .item-main:hover {
-    transform: scale(1.05); /* Aumenta el tamaño al pasar el mouse */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra al hacer hover */
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .item-img {
-    max-width: 100%; /* Asegura que la imagen no desborde la tarjeta */
-    height: auto; /* Mantiene la proporción de la imagen */
+    width: 200px;
+    height: 200px;
 }
 
 .buy-button {
-    margin-top: 10px; /* Espaciado entre la imagen y el botón */
+    margin-top: 10px;
 }
 
 .buy-button button {
-    background-color: rgb(255, 193, 7); /* Color de fondo del botón */
-    color: white; /* Color del texto del botón */
-    border: none; /* Sin borde */
-    padding: 10px 15px; /* Espaciado interno */
-    border-radius: 5px; /* Bordes redondeados del botón */
-    cursor: pointer; /* Cambia el cursor al pasar el mouse */
-    transition: background-color 0.3s; /* Transición suave del color de fondo */
+    background-color: rgb(255, 193, 7);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .buy-button img {
@@ -216,5 +219,5 @@
 }
 
 .buy-button button:hover {
-    background-color: rgb(212, 162, 9); /* Color de fondo al hacer hover */
+    background-color: rgb(212, 162, 9);
 }

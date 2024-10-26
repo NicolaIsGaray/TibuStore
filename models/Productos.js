@@ -9,11 +9,6 @@ const productData = new mongoose.Schema ({
         type: String,
         require:true
     },
-    id: {
-        type: String,
-        require: true,
-        unique: true
-    },
     stock: {
         type: Number,
         require: true,

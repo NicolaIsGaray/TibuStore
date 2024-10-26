@@ -3,12 +3,11 @@ const productRoute = express.Router();
 const Producto = require("../models/Productos");
 
 productRoute.post('/agregar-producto', async (req, res) => {
-    const {nombre, descripcion, id, stock, imgPortada, precio} = req.body
+    const {nombre, descripcion, stock, imgPortada, precio} = req.body
     console.log(req.body);
     const producto = {
         nombre,
         descripcion,
-        id,
         stock,
         imgPortada,
         precio
