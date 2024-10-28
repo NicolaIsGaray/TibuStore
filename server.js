@@ -1,8 +1,7 @@
 const express = require("express");
 const app = express();
-const homeR = require("./routes/home");
-const userR = require("./routes/usuarios");
-const productR = require("./routes/productos");
+
+const routes = require("./routes/home");
 
 const dotEnv = require("dotenv");
 dotEnv.config();
@@ -13,13 +12,12 @@ const MONGO_P = process.env.MONGO_P;
 
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
-const url = `mongodb+srv://${MONGO_U}:${MONGO_P}@generaldata.xnxij.mongodb.net/?retryWrites=true&w=majority&appName=generalData`
+const url = `mongodb+srv://${MONGO_U}:${MONGO_P}@generaldata.5ebr4.mongodb.net/?retryWrites=true&w=majority&appName=generalData`
 
-app.use("/", homeR);
-app.use("/", userR);
-app.use("/", productR);
+app.use("/", routes);
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use(

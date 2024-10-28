@@ -19,8 +19,7 @@ const productData = new mongoose.Schema ({
         require: true
     },
     imgPortada: {
-        type: String,
-        require: true
+        type: String
     }
 });
 

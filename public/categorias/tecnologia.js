@@ -12,6 +12,11 @@ document.querySelectorAll('.deploy-arrow').forEach(function(arrow) {
     });
 });
 
+//REDIRECCIÓN AL PRODUCTO
+function toProduct() {
+    window.location.href = "./producto.html";
+}
+
 
 //RENDERIZADO DE PRODUCTOS
 
@@ -22,25 +27,23 @@ const renderProduct = (Productos) => {
     const productImg = document.createElement("img");
     const buyButton = document.createElement("button");
     const buyLogo = document.createElement("img");
-    const toBuy = document.createElement("a");
 
     productImg.classList.add("item-img");
     buyButton.classList.add("buy-button");
     divItem.classList.add("item-main");
 
-    toBuy.setAttribute("href", "./producto.html");
-    buyLogo.setAttribute("src", "../media/icons/iconoCesta.png")
+    buyButton.setAttribute("onclick", "toProduct()");
+    buyLogo.setAttribute("src", "../media/icons/iconoCesta.png");
     buyLogo.setAttribute("alt", "producto");
 
     const spanBuy = document.createTextNode("Comprar ");
 
-    let imgVerify = Productos.imgPortada ? Productos.imgPortada : "../media/icons/defaultImg"
+    let imgVerify = Productos.imgPortada ? Productos.imgPortada : "../media/icons/default.png"
     productImg.setAttribute("src", imgVerify);
 
     buyButton.appendChild(spanBuy);
     buyButton.appendChild(buyLogo);
-    toBuy.appendChild(buyButton);
-    divItem.appendChild(toBuy);
+    divItem.appendChild(buyButton);
     divItem.appendChild(productImg);
 
     divProducts.appendChild(divItem);

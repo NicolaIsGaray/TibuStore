@@ -9,6 +9,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.7.2",
     "node": "^22.10.0",
-    "sweetalert2": "^11.14.3"
+    "sweetalert2": "^11.14.3",
+    "uuid": "^10.0.0"
   }
 }

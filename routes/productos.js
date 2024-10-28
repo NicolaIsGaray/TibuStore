@@ -2,23 +2,26 @@ const express = require("express");
 const productRoute = express.Router();
 const Producto = require("../models/Productos");
 
-productRoute.post('/agregar-producto', async (req, res) => {
-    const {nombre, descripcion, stock, imgPortada, precio} = req.body
+productRoute.post('/agregarProducto', async (req, res) => {
+    const { nombre, descripcion, stock, imgPortada, precio } = req.body;
     console.log(req.body);
-    const producto = {
+
+    const product = {
         nombre,
         descripcion,
         stock,
-        imgPortada,
-        precio
+        precio,
+        imgPortada
     }
+
     try {
-        const producto = await Producto.create(req.body);
-        res.status(201).send(producto);
+        const nuevoProducto = await Producto.create(req.body);
+        res.status(201).send(nuevoProducto);
     } catch (error) {
-        res.status(500).send(error);
+        console.error("Error al crear el producto:", error);
+        res.status(500).send({ message: "Error en el servidor", error: error.message });
     }
-})
+});
 
 productRoute.put('/editar-producto/:id', async (req, res) => {
     try {

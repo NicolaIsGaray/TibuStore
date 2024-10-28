@@ -32,11 +32,13 @@ const productRegister = async (e) => {
         imgPortada
     };
 
+    console.log(ObjectsToSend)
+
     try {
-        await axios.post("../../producto/agregar-producto", ObjectsToSend)
-        window.location.href = "../categorias/tecnologia.html"
+        await axios.post("/producto/agregarProducto", ObjectsToSend)
+        window.location.href = "./agregarProducto.html"
     } catch (error) {
-        console.log(error);
+        console.log(error.response.data);
         
     }
 }
