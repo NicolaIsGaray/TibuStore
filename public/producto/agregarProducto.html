@@ -20,16 +20,31 @@
     <div class="container-product">
       <div class="info-box">
         <form action="" method="post">
-          <label for="productName">Nombre del Producto</label> <br>
-          <input type="text" name="NombreProducto" id="productName" required> <br>
-          <label for="productDesc">Descripción</label> <br>
-          <input type="text" name="DescripcionProducto" id="productDesc" required> <br>
-          <label for="stock">Stock</label> <br>
-          <input type="text" name="Stock" id="stock" required> <br>
-          <label for="price">Precio</label> <br>
-          <input type="text" name="Precio" id="price" required> <br>
-          <label for="image">Imagen</label> <br> 
-          <input type="text" name="Imagen" id="image"> <br>
+          <label for="productName"></label> <br>
+          <div class="textInputWrapper">
+            <input placeholder="Nombre del Producto" type="text" class="textInput" name="NombreProducto" id="productName" required>
+        </div>
+        <div class="textInputWrapper">
+          <textarea name="DescripcionProducto" id="productDesc" cols="30" rows="10" class="textareaInput" placeholder="Describe tu producto" required></textarea>
+      </div>
+      <div class="textInputWrapper">
+        <input placeholder="¿Cuantas Unidades Deseas Vender?" type="number" class="textInput" name="Stock" id="stock" required>
+    </div>
+    <div class="textInputWrapper">
+      <input placeholder="¿Que precio tendrá?" type="number" class="textInput" name="precioProducto" id="price" required>
+  </div>
+  <div class="textInputWrapper">
+    <input placeholder="Imagen de Portada (URL)" type="text" class="textInput" name="ImagenPortada" id="image" required>
+</div>
+          <label for="multiImg">Fotos del producto</label> <br>
+          <div class="textInputWrapper">
+            <input placeholder="" type="file" class="textInput" name="ImagenesProducto" id="productImages" multiple required>
+        </div>
+          <select id="category">
+            <option value="Tecnologia">Tecnologia</option>
+            <option value="Indumentaria">Indumentaria</option>
+            <option value="Oferta">Oferta</option>
+        </select>
           <input type="submit" value="Añadir Producto" id="addProduct">
         </form>
       </div>

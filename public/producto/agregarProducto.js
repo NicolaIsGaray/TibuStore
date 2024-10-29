@@ -4,31 +4,36 @@ function getInputValues() {
     const productStockInput = document.querySelector("#stock");
     const productPriceInput = document.querySelector("#price");
     const productImgInput = document.querySelector("#image");
+    const productMultiImgInput = document.querySelector("#productImages");
+    const productCategoryInput = document.querySelector("#category");
 
     const productNameValue = productNameInput.value;
     const productDescValue = productDescInput.value;
     const productStockValue = productStockInput.value;
     const productPriceValue = productPriceInput.value;
     const productImgValue = productImgInput.value;
+    const productCategoryValue = productCategoryInput.value;
 
     return {
         nombre : productNameValue,
         descripcion: productDescValue,
         stock: productStockValue,
         precio: productPriceValue,
+        categoria: productCategoryValue,
         imgPortada: productImgValue
     }
 }
 
 const productRegister = async (e) => {
     e.preventDefault();
-    const {nombre, descripcion, stock, precio, imgPortada} = getInputValues();
+    const {nombre, descripcion, stock, precio, imgPortada, categoria} = getInputValues();
 
     const ObjectsToSend = {
         nombre,
         descripcion,
         stock,
         precio,
+        categoria,
         imgPortada
     };
 

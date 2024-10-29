@@ -1,14 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Faustina:ital,wght@0,300..800;1,300..800&family=Markazi+Text:wght@400..700&family=Oswald:wght@200..700&display=swap');
+
 body {
     background-color: rgb(33, 37, 41) !important;
-}
-
-.container-product {
     display: flex;
     justify-content: center;
 }
 
-.info-box {
-    background-color: antiquewhite;
-    width: 500px;
-    height: auto;
+.container-product {
+    position: relative;
+    border: 1px solid gray;
+    width: 85%;
+    height: 45vw;
+    margin: 2vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(33, 37, 41);
+    box-shadow: 0px 0px 100px 4px rgba(128, 128, 128, 0.7);
+    overflow: hidden;
+    color: rgb(255, 193, 7);
+    justify-content: center;
+    font-family: "Faustina", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
 }
+
+.textareaInput {
+    width: 18vw;
+    height: 210px;
+    resize: none;
+    background-color: #252525;
+    outline: none;
+    border: none;
+}
+
+.textareaInput::placeholder {
+    transition: all .3s ease;
+    text-align: center;
+}
+
+.textareaInput:focus::placeholder {
+    color: transparent;
+    transition: all .3s ease;
+    font-size: 20px;
+}
+
+.textInputWrapper {
+    position: relative;
+    width: 180px;
+    margin: 12px 5px;
+    --accent-color: rgb(255, 193, 7);
+  }
+  
+  .textInputWrapper:before {
+    transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+  }
+  
+  .textInputWrapper:before,
+  .textInputWrapper:after {
+    content: "";
+    left: 0;
+    right: 0;
+    position: absolute;
+    pointer-events: none;
+    bottom: -1px;
+    z-index: 4;
+    width: 18vw;
+  }
+  
+  .textInputWrapper:focus-within:before {
+    border-bottom: 1px solid var(--accent-color);
+  }
+  
+  .textInputWrapper:before {
+    transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+  }
+  
+  .textInputWrapper:focus-within:before {
+    border-bottom: 1px solid var(--accent-color);
+    transform: scaleX(1);
+  }
+  
+  .textInputWrapper:focus-within:after {
+    border-bottom: 2px solid var(--accent-color);
+    transform: scaleX(1);
+  }
+  
+  .textInputWrapper:after {
+    content: "";
+    transform: scaleX(0);
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    will-change: transform;
+    border-bottom: 2px solid var(--accent-color);
+    border-bottom-color: var(--accent-color);
+  }
+  
+  .textInput::placeholder {
+    transition: opacity 250ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    opacity: 1;
+    user-select: none;
+    color: rgba(255, 255, 255, 0.582);
+  }
+  
+  .textInputWrapper .textInput {
+    border-radius: 5px 5px 0px 0px;
+    box-shadow: 0px 2px 5px rgb(35 35 35 / 30%);
+    max-height: 36px;
+    background-color: #252525;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 200ms;
+    transition-property: background-color;
+    color: #e8e8e8;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px;
+    width: 18vw;
+    border-left: none;
+    border-bottom: none;
+    border-right: none;
+  }
+  
+  .textInputWrapper .textInput:focus,
+  .textInputWrapper .textInput:active {
+    outline: none;
+  }
+  
+  .textInputWrapper:focus-within .textInput,
+  .textInputWrapper .textInput:focus,
+  .textInputWrapper .textInput:active {
+    background-color: #353535;
+  }
+  
+  .textInputWrapper:focus-within .textInput::placeholder {
+    opacity: 0;
+  }
+  

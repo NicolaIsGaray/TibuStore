@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { type } = require("os");
 
 const productData = new mongoose.Schema ({
     nombre: {
@@ -18,9 +19,19 @@ const productData = new mongoose.Schema ({
         type: Number,
         require: true
     },
+    categoria: {
+        type: String,
+        require: true,
+        enum: ['Tecnologia', 'Indumentaria', 'Oferta']
+    },
     imgPortada: {
         type: String
-    }
+    },
+    imagenes: [
+        {
+        type: String
+        }
+    ]
 });
 
 module.exports = mongoose.model("Información sobre el producto", productData);

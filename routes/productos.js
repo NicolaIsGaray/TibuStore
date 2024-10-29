@@ -3,14 +3,17 @@ const productRoute = express.Router();
 const Producto = require("../models/Productos");
 
 productRoute.post('/agregarProducto', async (req, res) => {
-    const { nombre, descripcion, stock, imgPortada, precio } = req.body;
+    const { nombre, descripcion, stock, imgPortada, precio, categoria } = req.body;
     console.log(req.body);
+
+    console.log("Datos recibidos en el backend:", req.body);
 
     const product = {
         nombre,
         descripcion,
         stock,
         precio,
+        categoria,
         imgPortada
     }
 

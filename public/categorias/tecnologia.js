@@ -12,9 +12,8 @@ document.querySelectorAll('.deploy-arrow').forEach(function(arrow) {
     });
 });
 
-//REDIRECCIÓN AL PRODUCTO
-function toProduct() {
-    window.location.href = "./producto.html";
+const redirect = (id, url) => {
+    window.location.href = `${url}?product=${id}`;
 }
 
 
@@ -32,7 +31,6 @@ const renderProduct = (Productos) => {
     buyButton.classList.add("buy-button");
     divItem.classList.add("item-main");
 
-    buyButton.setAttribute("onclick", "toProduct()");
     buyLogo.setAttribute("src", "../media/icons/iconoCesta.png");
     buyLogo.setAttribute("alt", "producto");
 
@@ -49,6 +47,10 @@ const renderProduct = (Productos) => {
     divProducts.appendChild(divItem);
 
     console.log(Productos._id);
+
+    buyButton.addEventListener("click", () => {
+        redirect(Productos._id,`./producto.html`)
+    })
 }
 
 //OBTENER PRODUCTOS (MODELO BACKEND)
