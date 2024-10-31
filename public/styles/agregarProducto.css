@@ -9,8 +9,9 @@ body {
 .container-product {
     position: relative;
     border: 1px solid gray;
+    max-width: 100%;
     width: 85%;
-    height: 45vw;
+    height: auto;
     margin: 2vw;
     display: flex;
     flex-direction: column;
@@ -26,6 +27,40 @@ body {
     font-style: normal;
 }
 
+.agregarTitle {
+  position: relative;
+  top: 0.8vw;
+  border: 1px gray solid;
+  border-radius: 4px;
+  background-color: #252525;
+  width: 18vw;
+  text-align: center;
+  max-width: 100%;
+  height: auto;
+}
+
+.multiImgContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #252525;
+  width: 18.5vw;
+  height: 5vw;
+  color:rgba(255, 255, 255, 0.582);
+  border-bottom: black solid 1px;
+}
+
+.categoryContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #252525;
+  width: 18.5vw;
+  height: 5vw;
+  color:rgba(255, 255, 255, 0.582);
+  border-bottom: black solid 1px;
+}
+
 .textareaInput {
     width: 18vw;
     height: 210px;
@@ -33,6 +68,7 @@ body {
     background-color: #252525;
     outline: none;
     border: none;
+    color: #fff;
 }
 
 .textareaInput::placeholder {
@@ -137,4 +173,255 @@ body {
   .textInputWrapper:focus-within .textInput::placeholder {
     opacity: 0;
   }
+
+  .addProductContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 1vw;
+  }
   
+  .addProductContainer input {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background: #252525;
+    font-family: "Montserrat", sans-serif;
+    overflow: hidden;
+    cursor: pointer;
+    border: rgb(255, 193, 7) 1px solid;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+    padding: 18px 25px;
+    color: rgb(255, 193, 7);
+    font-size: 1.125em;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    z-index: 20;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .addProductContainer input[type="submit"]:hover {
+    background: rgb(255, 193, 7);
+    color: #252525;
+    animation: scaleUp 0.3s ease-in-out;
+  }
+  
+  .addProductContainer input:after {
+    content: " ";
+    width: 0%;
+    height: 100%;
+    background: #ffd401;
+    position: absolute;
+    transition: all 0.4s ease-in-out;
+    right: 0;
+    z-index: 1;
+  }
+  
+  .addProductContainer input:hover::after {
+    right: auto;
+    left: 0;
+    width: 100%;
+    background: rgb(255, 193, 7);
+  }
+  
+  @keyframes scaleUp {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.95);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  #backButton {
+    background-color: #252525;
+    border: rgb(255, 193, 7) 1px solid;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+    color: rgb(255, 193, 7);
+    padding: 0.5vw;
+    width: 5vw;
+    transition: all 0.3s ease;
+  }
+
+  #backButton:hover {
+    border-radius: 24px;
+    transition: all 0.3s ease;
+  }
+
+  #category {
+    margin-top: 1vw;
+    background-color: #252525;
+    height: auto;
+    width: 10vw;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.582);
+    border-radius: 6px;
+    cursor: pointer;
+    max-width: 100%;
+    padding: 0.5vw
+  }
+
+  #logoShop {
+    display: none;
+  }
+
+  @media (min-width: 481px) and (max-width: 768px) {
+    .container-product {
+      top: 4.5rem;
+      position: relative;
+      height: 60rem;
+      width: 95%;
+      padding: 15px;
+    }
+
+    #logoShop {
+      position: absolute;
+      top: 9rem;
+      z-index: 5;
+      display: flex;
+      width: 200px;
+      height: 7rem;
+      justify-content: center;
+    }
+
+    .agregarTitle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50%;
+      height: 4rem;
+    }
+
+    .agregarTitle h1 {
+        font-size: 1.5em;
+    }
+
+    .textareaInput {
+        height: 120px;
+    }
+
+    .textInputWrapper .textInput,
+    .textareaInput {
+        width: 18rem;
+        padding: 10px;
+        font-size: 1em;
+    }
+
+    .textInputWrapper:before, .textInputWrapper:after {
+      width: 18rem;
+    }
+
+    .addProductContainer {
+      margin-top: 2rem;
+    }
+
+    .addProductContainer input {
+        padding: 10px;
+        font-size: 1em;
+    }
+
+    .categoryContainer {
+      height: 6rem;
+      width: 18.5rem;
+    }
+
+    #category {
+      margin-top: 1rem;
+      padding: 0.5rem;
+      width: 12rem;
+      height: auto;
+    }
+
+    #backButton {
+      display: none;
+  }
+}
+
+@media (max-width: 480px) {
+
+    body {
+      position: relative;
+      top: 10rem;
+    }
+
+    .container-product {
+        max-width: 100%;
+        height: 53.5rem;
+        padding: 10px;
+        margin: 0;
+        border: none;
+        box-shadow: none;
+    }
+
+    #logoShop {
+      position: absolute;
+      top: 1rem;
+      z-index: 5;
+      display: flex;
+      width: 200px;
+      height: 7rem;
+      justify-content: center;
+    }
+
+    .info-box {
+      width: 18.5rem;
+    }
+
+    .agregarTitle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50%;
+      height: 4rem;
+    }
+
+    .agregarTitle h1 {
+        font-size: 1.2em;
+    }
+
+    .textareaInput {
+        height: 100px;
+    }
+
+    .textInputWrapper:before, .textInputWrapper:after {
+      width: 18rem;
+    }
+
+    .textInputWrapper .textInput,
+    .textareaInput {
+      width: 18rem;
+        font-size: 0.9em;
+    }
+
+    .addProductContainer {
+      margin-top: 2rem;
+    }
+
+    .addProductContainer input {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+    
+    .categoryContainer {
+      height: 6rem;
+      width: 18.5rem;
+    }
+
+    #category {
+      margin-top: 1rem;
+      padding: 0.5rem;
+      width: 12rem;
+      height: auto;
+    }
+
+    #backButton {
+        display: none;
+    }
+}

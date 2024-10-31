@@ -17,6 +17,16 @@ const redirect = (id, url) => {
 }
 
 
+const addProductPage = document.getElementById('addProductPage');
+
+const goToAdd = async () => {
+    window.location.href = '../producto/agregarProducto.html';
+}
+
+addProductPage.addEventListener('click', (e) => {
+    goToAdd(e);
+})
+
 //RENDERIZADO DE PRODUCTOS
 
 const renderProduct = (Productos) => {

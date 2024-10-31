@@ -27,6 +27,26 @@ function getInputValues() {
 const productRegister = async (e) => {
     e.preventDefault();
     const {nombre, descripcion, stock, precio, imgPortada, categoria} = getInputValues();
+    const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
+
+    if (!nombre || !descripcion || !stock || !precio || !categoria) {
+        Swal.fire({
+            icon: "error",
+            title: "¡Epa!",
+            text: "Porfavor, completa los campos necesarios."
+          });
+        return;
+    }
+
+    if (imgPortada && imgPortada.length >= 1){
+        if (!urlRegex.test(imgPortada)) {
+            swal({
+                title: "Por favor, ingresa una URL válida.",
+                icon: 'warning'
+            });
+            return;
+        }
+    } 
 
     const ObjectsToSend = {
         nombre,
@@ -51,4 +71,29 @@ const productRegister = async (e) => {
 const productAdd = document.querySelector("#addProduct");
 productAdd.addEventListener("click", (e) => {
     productRegister(e);
+})
+
+const backButton = document.getElementById('backButton');
+
+backButton.addEventListener("mouseover", () => {
+    backButton.value = '¿Regresar?';
+})
+
+backButton.addEventListener("mouseout", () => {
+    backButton.value = 'Regresar';
+})
+
+const goBack = async (e) => {
+    e.preventDefault();
+
+    try {
+        window.history.back();
+    } catch (error) {
+        console.log(error);
+        
+    }
+}
+
+backButton.addEventListener('click', (e) =>{
+    goBack(e);
 })

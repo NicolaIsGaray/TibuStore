@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
 
+#headerMobile {
+    display: none;
+}
+
 .main-page-bkg1 {
     position: relative;
     bottom: 32vw;
@@ -110,6 +114,13 @@
     visibility: visible;
 }
 
+.sidebar-bars {
+    background-color: transparent;
+    color: rgb(255, 193, 7);
+    border: none;
+    transform: scale(1.2);
+}
+
 .item-main {
     background-color: white;
     width: 200px;
@@ -193,3 +204,32 @@
 .buy-button img {
     transform: scale(0.6);
 }
+
+    @media (max-width: 480px) {
+        #headerDesk {
+            display: none;
+        }
+
+        #navbar-desktop-container {
+            display: none;
+        }
+
+        .userLogs {
+            display: none;
+        }
+
+        #img-box {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        #headerMobile {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        #headerMobile img {
+            width: 64px;
+            height: 64px;
+        }
+    }
