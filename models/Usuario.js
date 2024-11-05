@@ -21,6 +21,15 @@ const userData = new mongoose.Schema ({
         },
         contraseña: {type: String, require: true, min: 8},
         productosFavoritos: {}
+    },
+    contraseña: {
+        type: String,
+        require
+    },
+    rol: {
+        type: String,
+        enum: ['admin', 'cliente'],
+        default: 'cliente'
     }
 })
 

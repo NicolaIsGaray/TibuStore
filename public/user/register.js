@@ -130,7 +130,7 @@ const userRegister = async (e) => {
     }
 };
 
-const buttonRegister = document.querySelector("#userRegisterButton");
+const buttonRegister = document.querySelector("#registerButton");
 buttonRegister.addEventListener("click", (e) => {
     userRegister(e);
 });

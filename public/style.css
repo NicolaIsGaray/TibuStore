@@ -64,7 +64,6 @@
     font-style: normal;
 }
 
-/* Estilos para la subnavbar */
 .subnavbar-desktop-li {
     width: 8vw;
     text-align: center;
@@ -79,7 +78,7 @@
     margin-top: 0;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 
-    /* Transición inicial */
+    /* Transición */
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.4s ease, visibility 0.4s ease;
@@ -103,7 +102,6 @@
     transition: all .3s;
 }
 
-/* Mostrar la subnavbar al pasar el ratón por encima del elemento padre */
 .navbar-desktop-compo:hover .subnavbar-desktop-li,
 .navbar-desktop-compo:focus-within .subnavbar-desktop-li {
     opacity: 1;
@@ -186,6 +184,12 @@
     left: 16vw;
     padding: 2vw;
     width: 16vw;
+    text-align: center;
+}
+
+.subtitle-main-products h3 {
+    border-bottom: 1px black solid;
+    padding-bottom: 1vw;
 }
 
 .features-subcontainer {
@@ -218,12 +222,22 @@
 }
 
 .buy-button {
-    position: relative;
-    top: 9vw;
+    background-color: rgb(255, 193, 7);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .buy-button img {
-    transform: scale(0.6);
+    color: #ccc;
+}
+
+.buy-button:hover {
+    background-color: rgb(33 37 41);
 }
 
     @media (max-width: 480px) {
@@ -352,6 +366,11 @@
         .products-main-container {
             justify-content: space-between;
             overflow: scroll;
+        }
+
+        .products-main {
+            position: relative;
+            top: 1rem;
         }
 
         .features-container {

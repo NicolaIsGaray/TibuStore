@@ -1,6 +1,7 @@
 const express = require("express");
 const productRoute = express.Router();
 const Producto = require("../models/Productos");
+const { authMiddleware, adminMiddleware } = require("../middlewares/authMiddleware");
 
 productRoute.post('/agregarProducto', async (req, res) => {
     const { nombre, descripcion, stock, imgPortada, precio, categoria } = req.body;

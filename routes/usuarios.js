@@ -11,7 +11,6 @@ const Usuario = require("../models/Usuario");
 const adminK = process.env.ADMIN_ACCESS;
 
 const saltRounds = 10;
-const adminKey = adminK;
 
 const hashPassword = async (contraseña) => {
     const hashing = await bCrypt.hash(contraseña, saltRounds);
@@ -61,6 +60,7 @@ userRoute.post('/logIn', async (req, res) => {
             console.log('Contraseña incorrecta');
             res.status(401).send({message: 'Credenciales no válidas. Verifica tu usuario y contraseña.'});
         }
+        
     } catch (error) {
         console.error('Error en la autenticación:', error);
         res.status(500).send({message: 'Error en la autenticación.'});
