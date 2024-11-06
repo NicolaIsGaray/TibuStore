@@ -48,9 +48,9 @@ productRoute.get('/productos', async (req, res) => {
     }
 })
 
-productRoute.get('/selected/:idProductoSel', async (req, res) => {
+productRoute.get('/selected/:categoria', async (req, res) => {
     try {
-        let select = await Producto.findById(req.params.idProductoSel)
+        let select = await Producto.findOne(req.params.categoria)
         if (!select) {
             return res.status(404).json({ error: 'Producto no encontrado.' });
         }

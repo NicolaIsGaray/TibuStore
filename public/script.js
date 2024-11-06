@@ -2,6 +2,13 @@ const redirect = (id, url) => {
     window.location.href = `${url}?product=${id}`;
 }
 
+const testHeader = document.querySelector(".testH")
+
+testHeader.addEventListener("click", () => {
+    const getHeader = document.querySelector(".tabTitle");
+    getHeader.textContent = "Hola"
+})
+
 const renderProduct = (Productos) => {
     const ulProducts = document.querySelector(".products-main")
 

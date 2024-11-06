@@ -22,7 +22,7 @@ const productData = new mongoose.Schema ({
     categoria: {
         type: String,
         require: true,
-        enum: ['Tecnologia', 'Indumentaria', 'Oferta']
+        enum: ['suplemento', 'vasosAndShakers', 'oferta']
     },
     imgPortada: {
         type: String

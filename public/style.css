@@ -5,7 +5,7 @@
 }
 
 .main-page-bkg1 {
-    max-width: 100%;
+    width: 100%;
     height: auto;
 }
 
@@ -42,6 +42,7 @@
     padding: 10px;
     margin-top: 1vw;
     width: 100%;
+    height: 2.5vw;
 }
 
 .navbar-desktop-li {
@@ -62,55 +63,6 @@
     color: rgb(87, 87, 87);
     font-family: "Lilita One", sans-serif;
     font-style: normal;
-}
-
-.subnavbar-desktop-li {
-    width: 8vw;
-    text-align: center;
-    display: block;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: rgba(255, 193, 7, 0.9);
-    padding: 12px;
-    list-style: none;
-    border: none;
-    margin-top: 0;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-
-    /* Transición */
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.4s ease, visibility 0.4s ease;
-}
-
-.subnavbar-desktop-li li {
-    margin-bottom: 5px;
-}
-
-.subnavbar-desktop-li li > a {
-    color: rgb(87, 87, 87);
-    text-decoration: none;
-    font-family: "Lilita One", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    transition: all .3s;
-}
-
-.subnavbar-desktop-li li > a:hover {
-    color: white;
-    transition: all .3s;
-}
-
-.navbar-desktop-compo:hover .subnavbar-desktop-li,
-.navbar-desktop-compo:focus-within .subnavbar-desktop-li {
-    opacity: 1;
-    visibility: visible;
-}
-
-.subnavbar-desktop-li:hover {
-    opacity: 1;
-    visibility: visible;
 }
 
 .sidebar-bars {
