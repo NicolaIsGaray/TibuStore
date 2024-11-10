@@ -48,7 +48,19 @@ productRoute.get('/productos', async (req, res) => {
     }
 })
 
-productRoute.get('/selected/:categoria', async (req, res) => {
+productRoute.get('/selected/:idProductSel', async (req, res) => {
+    try {
+        const producto = await Producto.findById(req.params.idProductSel);
+        if (!producto) {
+            return res.status(404).json({ message: "Producto no encontrado" });
+        }
+        res.status(200).json(producto);
+    } catch (error) {
+        res.status(500).json({ message: "Error en el servidor", error: error.message });
+    }
+});
+
+productRoute.get('/selected/:categoriaSel', async (req, res) => {
     try {
         let select = await Producto.findOne(req.params.categoria)
         if (!select) {

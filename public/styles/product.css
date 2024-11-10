@@ -117,16 +117,25 @@
 .product-about {
     display: flex;
     justify-content: center;
+    margin-top: 12rem;
 }
 
 .product-about h3 {
-    margin-top: 6vw;
     width: 300px;
     font-weight: 700;
 }
 
 .product-about p {
     font-size: 12px;
+}
+
+.product-img {
+    margin-right: 6vw;
+}
+
+.product-img img {
+    width: 16vw;
+    height: auto;
 }
 
 .purchase-buttons {

@@ -1,3 +1,33 @@
+const inputFieldPrice = document.getElementById('price');
+
+inputFieldPrice.addEventListener('input', (event) => {
+    let value = event.target.value;
+
+    // Elimina cualquier carácter no numérico (excepto el punto decimal)
+    value = value.replace(/\D/g, '');
+
+    // Formatea el número con puntos cada mil
+    value = new Intl.NumberFormat('es-ES').format(value);
+
+    // Asigna el valor formateado de nuevo al input
+    event.target.value = value;
+});
+
+const inputFieldStock = document.getElementById('stock');
+
+inputFieldStock.addEventListener('input', (event) => {
+    let value = event.target.value;
+
+    // Elimina cualquier carácter no numérico (excepto el punto decimal)
+    value = value.replace(/\D/g, '');
+
+    // Formatea el número con puntos cada mil
+    value = new Intl.NumberFormat('es-ES').format(value);
+
+    // Asigna el valor formateado de nuevo al input
+    event.target.value = value;
+});
+
 function getInputValues() {
     const productNameInput = document.querySelector("#productName");
     const productDescInput = document.querySelector("#productDesc");
@@ -9,16 +39,16 @@ function getInputValues() {
 
     const productNameValue = productNameInput.value;
     const productDescValue = productDescInput.value;
-    const productStockValue = productStockInput.value;
-    const productPriceValue = productPriceInput.value;
+    const productStockValue = productStockInput.value.replace(/\./g, '');
+    const productPriceValue = productPriceInput.value.replace(/\./g, '');
     const productImgValue = productImgInput.value;
     const productCategoryValue = productCategoryInput.value;
 
     return {
         nombre : productNameValue,
         descripcion: productDescValue,
-        stock: productStockValue,
-        precio: productPriceValue,
+        stock: parseInt(productStockValue, 10),
+        precio: parseFloat(productPriceValue),
         categoria: productCategoryValue,
         imgPortada: productImgValue
     }
@@ -96,4 +126,7 @@ const goBack = async (e) => {
 
 backButton.addEventListener('click', (e) =>{
     goBack(e);
+    window.onload = function() {
+        location.reload();
+    };
 })
