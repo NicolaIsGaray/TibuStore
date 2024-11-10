@@ -39,7 +39,7 @@ const renderProduct = (Productos) => {
     console.log(Productos._id);
 
     buyButton.addEventListener("click", () => {
-        redirect(Productos._id,`./producto.html`)
+        redirect(Productos._id,`./categorias/producto.html`)
     })
 }
 
