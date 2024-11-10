@@ -8,20 +8,23 @@ const JWT = require("jsonwebtoken");
 const dotEnv = require("dotenv");
 const Usuario = require("../models/Usuario");
 
+dotEnv.config();
+
 const adminK = process.env.ADMIN_ACCESS;
 
 const saltRounds = 10;
 
 const hashPassword = async (contraseña) => {
-    const hashing = await bCrypt.hash(contraseña, saltRounds);
-    return hashing;
-}
+    const salt = await bCrypt.genSalt(saltRounds);
+    const hashedPassword = await bCrypt.hash(contraseña, salt);
+    return hashedPassword;
+};
 
 userRoute.post("/signUp", async (req, res) => {
-    const {contraseña, nombre, apellido, email} = req.body;
+    const {nombre, apellido, username, email, contraseña} = req.body;
 
     if (!contraseña) {
-        console.log('Campo Inválido.');
+        console.log('Campo Inválido. Contraseña');
         return res.status(401).send({message: 'Credenciales no válidas: Contraseña'});
     }
 
@@ -30,6 +33,7 @@ userRoute.post("/signUp", async (req, res) => {
         contraseña: hashed,
         nombre,
         apellido,
+        username,
         email
     }
 
@@ -44,26 +48,27 @@ userRoute.post("/signUp", async (req, res) => {
 
 userRoute.post('/logIn', async (req, res) => {
     try {
-        const email = req.body.email;
-        const contraseña = req.body.contraseña;
-        const user = await Usuario.findOne({email: email});
+        const { username, contraseña } = req.body;
+        const user = await Usuario.findOne({ username: username });
+
+        if (!user) {
+            return res.status(401).send({ message: 'Usuario no encontrado.' });
+        }
 
         const match = await bCrypt.compare(contraseña, user.contraseña);
-        const payload = {email, nombre: user.nombre, apellido: user.apellido};
 
         if (match) {
-            console.log('Contraseña válida. Iniciando sesión...');
+            const payload = { email: user.email, nombre: user.nombre, apellido: user.apellido, username: user.username };
             const token = JWT.sign(payload, adminK);
             res.cookie("token", token);
             res.status(200).send(payload);
         } else {
-            console.log('Contraseña incorrecta');
-            res.status(401).send({message: 'Credenciales no válidas. Verifica tu usuario y contraseña.'});
+            res.status(401).send({ message: 'Contraseña incorrecta.' });
         }
-        
+
     } catch (error) {
         console.error('Error en la autenticación:', error);
-        res.status(500).send({message: 'Error en la autenticación.'});
+        res.status(500).send({ message: 'Error en la autenticación.' });
     }
 });
 
