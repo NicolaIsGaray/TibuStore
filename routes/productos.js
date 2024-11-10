@@ -70,7 +70,7 @@ productRoute.get('/selected/:categoriaSel', async (req, res) => {
     } catch (error) {
         res.status(500).send("Error")
     }
-})
+});
 
 productRoute.delete('/eliminar/:idProducto', async (req, res) => {
     try {
@@ -79,6 +79,24 @@ productRoute.delete('/eliminar/:idProducto', async (req, res) => {
     } catch (error) {
         res.status(500).send("Error")
     }
-})
+});
+
+productRoute.get('/buscar', async (req, res) => {
+    const { query } = req.query;  // Recoge el término de búsqueda del query string
+    try {
+        // Realiza una búsqueda en la base de datos (ajusta los campos que quieras buscar)
+        const productos = await Producto.find({
+            nombre: { $regex: query, $options: 'i' }  // Búsqueda parcial y sin distinción de mayúsculas
+        });
+
+        if (productos.length === 0) {
+            return res.status(404).json({ message: "No se encontraron productos" });
+        }
+        
+        res.status(200).json(productos); // Retorna los productos encontrados
+    } catch (error) {
+        res.status(500).json({ message: "Error en el servidor", error: error.message });
+    }
+});
 
 module.exports = productRoute;

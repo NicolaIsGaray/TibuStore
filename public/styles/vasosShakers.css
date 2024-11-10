@@ -1,5 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
 
+.desktop-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0vw 6vw 0vw 6vw;
+    height: 3vw;
+}
+
+.logo-shop img {
+    width: 2vw;
+    height: auto;
+}
+
 .main-page-bkg1 {
     position: relative;
     bottom: 32vw;

@@ -58,6 +58,29 @@ const renderProduct = (Productos) => {
     })
 }
 
+async function buscarProducto() {
+    const query = document.getElementById('searchInput').value;
+
+    if (!query) {
+        alert("Por favor, ingresa un término de búsqueda.");
+        return;
+    }
+
+    try {
+        const respuesta = await axios.get(`../../producto/buscar?query=${query}`);
+        const productos = respuesta.data;
+
+        // Redirige al usuario al primer producto encontrado
+        if (productos.length > 0) {
+            window.location.href = `../../producto/${productos[0]._id}`;  // Redirige al HTML del producto
+        } else {
+            alert("No se encontró el producto.");
+        }
+    } catch (error) {
+        console.error("Error al buscar el producto:", error.response.data);
+    }
+}
+
 //OBTENER PRODUCTOS (MODELO BACKEND)
 
 const getProductos = async () => {
