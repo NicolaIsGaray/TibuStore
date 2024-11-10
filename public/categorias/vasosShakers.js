@@ -59,7 +59,7 @@ const renderProduct = (Productos) => {
     divItem.appendChild(buyButton);
     divItem.appendChild(productImg);
 
-    if (Productos.categoria === 'suplemento') {
+    if (Productos.categoria === 'vasosAndShakers') {
         divProducts.appendChild(divItem);
     }
 

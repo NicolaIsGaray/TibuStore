@@ -91,7 +91,7 @@ const productRegister = async (e) => {
 
     try {
         await axios.post("/producto/agregarProducto", ObjectsToSend)
-        window.location.href = "./agregarProducto.html"
+        window.history.back();
     } catch (error) {
         console.log(error.response.data);
         

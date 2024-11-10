@@ -32,7 +32,7 @@ addProductPage.addEventListener('click', (e) => {
 const renderProduct = (Productos) => {
     const sectionName = document.querySelector("#currentSect").textContent;
 
-    const divProducts = document.querySelector(".products-card");
+    const divProducts = document.querySelector(".products-card")
     const divFilter = document.querySelector(".search-filter");
 
     const divItem = document.createElement("div");
@@ -59,7 +59,7 @@ const renderProduct = (Productos) => {
     divItem.appendChild(buyButton);
     divItem.appendChild(productImg);
 
-    if (Productos.categoria === 'suplemento') {
+    if (Productos.categoria === 'oferta') {
         divProducts.appendChild(divItem);
     }
 
