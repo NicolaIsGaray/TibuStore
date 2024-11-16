@@ -1,3 +1,4 @@
+//Formatear el texto del precio
 const inputFieldPrice = document.getElementById('price');
 
 inputFieldPrice.addEventListener('input', (event) => {
@@ -27,6 +28,36 @@ inputFieldStock.addEventListener('input', (event) => {
     // Asigna el valor formateado de nuevo al input
     event.target.value = value;
 });
+
+//Obtener Categorias
+async function obtenerCategorias() {
+    try {
+        const response = await axios.get('/producto/categorias'); // URL de la API que devuelve las categorías
+        const categorias = response.data; // Almacena las categorías obtenidas
+        return categorias; // Devuelve las categorías obtenidas
+    } catch (error) {
+        console.error('Error al obtener categorías:', error);
+    }
+}
+
+async function cargarCategorias() {
+    const categorias = await obtenerCategorias();
+
+    console.log(categorias);
+    
+    const selectContainer = document.querySelector("#category");
+
+    categorias.forEach(categoria => {
+        const catOption = document.createElement("option");
+        catOption.value = categoria.nombreCategoria;
+        catOption.text = categoria.nombreCategoria;
+
+    selectContainer.appendChild(catOption);
+    });
+    
+}
+
+cargarCategorias();
 
 function getInputValues() {
     const productNameInput = document.querySelector("#productName");

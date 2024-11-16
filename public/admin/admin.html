@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANZ Suplementos</title>
+    <link rel="shortcut icon" href="../icon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/admin.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body class="bg-white">
+    <header class="fixed-top pt-2 pb-0 text-bg-dark">
+      <div class="desktop-header-container">
+        <div class="logo-shop">
+          <a
+            href="#goUpMain"
+          >
+            <img
+              src="../media/logo-tibushop.png"
+              alt="tibulogo"
+            />
+          </a>
+        </div>
+        <div class="userOptions-container">
+          <a href="./user/login.html"
+              ><button type="button" class="btn btn-outline-light me-2">
+                Iniciar Sesión
+              </button></a
+            >
+            <a href="./user/register.html"
+              ><button type="button" class="btn btn-warning">
+                Registrarse
+              </button></a
+            >
+        </div>
+      </div>
+
+        <div id="navbar-desktop-container">
+          <ul class="navbar-desktop-li">
+            <li class="navbar-desktop-compo"><a href="../index.html">INICIO</a></li>
+            <li class="navbar-desktop-compo"><a href="../categorias/suplementos.html">SUPLEMENTOS</a>
+            
+            </li>
+            <li class="navbar-desktop-compo"><a href="../categorias/ofertas.html">OFERTAS</a></li>
+            <li class="navbar-desktop-compo"><a href="../categorias/vasosShakers.html">VASOS Y SHAKERS</a>
+            </li>
+            <li class="navbar-desktop-compo"><a href="../secciones/quienes-somos.html">QUIENES SOMOS</a></li>
+            <li class="navbar-desktop-compo"><a href="">CONTACTO</a></li>
+          </ul>
+        </div>
+      </header>
+
+      <div class="adm-container">
+        <div class="sidebarOptions">
+            <h3>ANZ Suplementos - Administración</h3>
+            <div class="flex-divider">
+              <div class="optionsList">
+                <ul>
+                    <li class="optionS" id="product-option">Productos</li>
+                    <li class="optionS" id="section-option">Secciones (EN PROCESO)</li>
+                    <li class="optionS" id="about-option">Sobre Nosotros</li>
+                    <li class="optionS" id="contact-option">Contacto</li>
+                </ul>
+            </div>
+            <div class="product-options">
+                <div class="addProduct-container">
+                    <span>Añade un producto nuevo</span> <br>
+                    <button type="button" class="btn btn-warning" id="addProductPage">
+                        Agregar Producto
+                      </button>
+                </div>
+                <div class="editProduct-container">
+                    <span>Edita tu producto</span> <br>
+                    <button type="button" class="btn btn-warning" id="editProductPage">
+                        Ver productos
+                      </button>
+                </div>
+                <div class="removeProduct-container">
+                    <span>Elimina un producto</span> <br>
+                    <button type="button" class="btn btn-warning" id="removeProductPage">
+                        Ver productos
+                      </button>
+                </div>
+                <div class="addCategory">
+                  <span>Agrega una Categoría nueva</span> <br>
+                    <form action="" method="post">
+                      <input type="text" name="newCategoria" id="newCtgr">
+                      <input type="submit" value="+" id="addCategoryBtn">
+                    </form>
+                </div>
+            </div>
+            <div class="section-options">
+              <div class="addSection-container">
+                  <span>Agrega una nueva Sección</span> <br>
+                  <button type="button" class="btn btn-warning" id="addSection">
+                      Añadir sección
+                    </button>
+              </div>
+              <div class="editSection-container">
+                  <span>Edita una Sección</span> <br>
+                  <button type="button" class="btn btn-warning" id="editSection">
+                      Elegir Sección
+                    </button>
+              </div>
+              <div class="removeSection-container">
+                  <span>Elimina una Sección</span> <br>
+                  <button type="button" class="btn btn-warning" id="removeSection">
+                      Elegir Sección
+                    </button>
+              </div>
+          </div>
+          <div class="about-options">
+            <div class="editAbout-container">
+              <form action="" method="post" id="about-form">
+                <label>Edita la información del apartado "Quienes Somos"</label> <br>
+                <textarea name="desc-about" id="new-info" cols="30" rows="10"></textarea> <br>
+                <input type="button" value="Editar" onclick="editarAcerca()">
+              </form>
+            </div>
+        </div>
+        <div class="contact-options">
+          <div class="editContact-container">
+            <form action="" method="post" id="contact-form">
+              <label>Edita la información de contacto.</label> <br>
+              <textarea name="desc-about" id="new-contact" cols="30" rows="10"></textarea> <br>
+              <input type="button" value="Editar" onclick="editarContacto()">
+            </form>
+          </div>
+      </div>
+        </div>
+      </div>
+    </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+     <script src="./admin.js"></script>
+</body>
+</html>

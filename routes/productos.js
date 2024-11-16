@@ -1,13 +1,11 @@
 const express = require("express");
 const productRoute = express.Router();
 const Producto = require("../models/Productos");
-const { authMiddleware, adminMiddleware } = require("../middlewares/authMiddleware");
+const Categorias = require("../models/Categorias");
 
 productRoute.post('/agregarProducto', async (req, res) => {
     const { nombre, descripcion, stock, imgPortada, precio, categoria } = req.body;
     console.log(req.body);
-
-    console.log("Datos recibidos en el backend:", req.body);
 
     const product = {
         nombre,
@@ -41,7 +39,7 @@ productRoute.put('/editar-producto/:id', async (req, res) => {
 productRoute.get('/productos', async (req, res) => {
     try {
         let productoRes = await Producto.find()
-        console.log(productoRes);
+        // console.log(productoRes);
         res.status(200).send(productoRes)
     } catch (error) {
         res.status(500).send("Error:", error)
@@ -60,15 +58,20 @@ productRoute.get('/selected/:idProductSel', async (req, res) => {
     }
 });
 
-productRoute.get('/selected/:categoriaSel', async (req, res) => {
+productRoute.get('/selectedCat/:categoriaSel', async (req, res) => {
     try {
-        let select = await Producto.findOne(req.params.categoria)
+        console.log("REQ PARAMS:", req.params);
+        console.log("Categoria en el backend:", { categoria: req.params.categoriaSel }); // Verificar si llega el parámetro
+        let select = await Producto.findOne({ categoria: req.params.categoriaSel });
         if (!select) {
-            return res.status(404).json({ error: 'Producto no encontrado.' });
+            return res.status(404).json({ error: 'Producto y/o Categoria no encontrados.' });
         }
-        res.status(200).send(select)
+        console.log("Producto en el backend:", select);
+
+        res.status(200).send(select);
     } catch (error) {
-        res.status(500).send("Error")
+        console.error("Error al buscar producto:", error);
+        res.status(500).send("Error en el servidor");
     }
 });
 
@@ -81,21 +84,36 @@ productRoute.delete('/eliminar/:idProducto', async (req, res) => {
     }
 });
 
-productRoute.get('/buscar', async (req, res) => {
-    const { query } = req.query;  // Recoge el término de búsqueda del query string
+productRoute.post('/categoria', async (req, res) => {
     try {
-        // Realiza una búsqueda en la base de datos (ajusta los campos que quieras buscar)
-        const productos = await Producto.find({
-            nombre: { $regex: query, $options: 'i' }  // Búsqueda parcial y sin distinción de mayúsculas
-        });
+        const { nombreCategoria } = req.body; // Recibe el nombre de la nueva categoría
 
-        if (productos.length === 0) {
-            return res.status(404).json({ message: "No se encontraron productos" });
+        // Verificar que la categoría no exista
+        const categoriaExistente = await Categorias.findOne({ nombreCategoria: nombreCategoria });
+        if (categoriaExistente) {
+            return res.status(400).json({ error: 'La categoría ya existe' });
         }
-        
-        res.status(200).json(productos); // Retorna los productos encontrados
+
+        // Crear una nueva categoría
+        const nuevaCategoria = new Categorias({ nombreCategoria: nombreCategoria });
+        await nuevaCategoria.save();
+
+        res.json({ success: true, categoria: nuevaCategoria }); // Devuelve la nueva categoría
     } catch (error) {
-        res.status(500).json({ message: "Error en el servidor", error: error.message });
+        console.error('Error al agregar categoría:', error);
+        res.status(500).json({ error: 'Error en el servidor' });
+    }
+});
+
+productRoute.get('/categorias', async (req, res) => {
+    try {
+        const nombreCategoria = req.params;
+
+        const categorias = await Categorias.find(nombreCategoria); // Obtener todas las categorías desde la base de datos
+        res.json(categorias); // Devuelve las categorías
+    } catch (error) {
+        console.error('Error al obtener categorías:', error);
+        res.status(500).json({ error: 'Error en el servidor' });
     }
 });
 

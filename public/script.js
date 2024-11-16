@@ -1,3 +1,68 @@
+//Verificacion de Rol
+const obtenerAdminBtn = document.querySelector(".adm-b");
+const getLogRegBtn = document.querySelector(".userOptions-container")
+
+window.onload = () => {
+    obtenerAdminBtn.style.display = "none";
+    getLogRegBtn.style.display = "none"
+}
+
+async function obtenerRolUsuario() {
+    const token = localStorage.getItem("token"); // Obtener el token almacenado en localStorage
+
+    if (!token) {
+        alert("No estás autenticado.");
+        return;
+    }
+
+    try {
+        // Hacer la solicitud para obtener el rol
+        const response = await axios.get('/usuario/verificar-rol', {
+            headers: {
+                Authorization: `Bearer ${token}` // Enviar el token en los headers
+            }
+        });
+
+        console.log('Respuesta del servidor:', response.data); // Imprimir toda la respuesta para depuración
+
+        const isAdmin = response.data.isAdmin; // Suponiendo que el backend te está enviando isAdmin como true/false
+
+        if (isAdmin) {
+            console.log("El usuario es un administrador.");
+            alert("Eres admin.")
+            // Aquí puedes mostrar los botones de admin
+            obtenerAdminBtn.style.display = "flex"; // Mostrar los botones para admin
+            getLogRegBtn.innerHTML = ' '
+        } else {
+            console.log("El usuario es un cliente.");
+            // Aquí puedes mostrar los botones de cliente
+            obtenerAdminBtn.innerHTML = ' '; // Ocultar botones de admin si es cliente
+            document.getElementById("clienteButton").style.display = "block"; // Mostrar botones de cliente
+        }
+
+    } catch (error) {
+    }
+}
+
+// Llamada para verificar el rol y ejecutar la acción
+obtenerRolUsuario();
+
+//Obtener Categorias
+async function obtenerCategorias() {
+    try {
+        const response = await axios.get('/producto/categorias');
+        const categorias = response.data; // Almacena las categorías obtenidas
+        return categorias;
+    } catch (error) {
+        console.error('Error al obtener categorías:', error);
+    }
+}
+
+async function trySeccion() {
+    const seccion = await obtenerCategorias();
+    window.location.href = `./categorias/seccion.html?seccion=${seccion.nombreCategoria}`
+}
+
 const redirect = (id, url) => {
     window.location.href = `${url}?product=${id}`;
 }

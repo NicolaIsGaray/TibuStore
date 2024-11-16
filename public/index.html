@@ -38,6 +38,18 @@
               </button></a
             >
         </div>
+        <div class="test-tab">
+          <button type="button" class="btn btn-warning" onclick="trySeccion()">
+                Ir a Secciones
+              </button>
+        </div>
+        <div class="adm-b">
+          <a href="./admin/admin.html"
+              ><button type="button" class="btn btn-warning">
+                Administración
+              </button></a
+            >
+        </div>
       </div>
 
       <div id="navbar-desktop-container">
@@ -46,16 +58,16 @@
             <a href="./index.html">INICIO</a>
           </li>
           <li class="navbar-desktop-compo">
-            <a href="./categorias/suplementos.html">SUPLEMENTOS</a>
+            <a href="./secciones/seccion.html?seccion=suplementos">SUPLEMENTOS</a>
           </li>
           <li class="navbar-desktop-compo">
-            <a href="./categorias/ofertas.html">OFERTAS</a>
+            <a href="">OFERTAS</a>
           </li>
           <li class="navbar-desktop-compo">
-            <a href="./categorias/vasosShakers.html">VASOS Y SHAKERS</a>
+            <a href="">VASOS Y SHAKERS</a>
           </li>
           <li class="navbar-desktop-compo">
-            <a href="./info-nosotros/quienes-somos.html">QUIENES SOMOS</a>
+            <a href="./secciones/quienes-somos.html">QUIENES SOMOS</a>
           </li>
           <li class="navbar-desktop-compo"><a href="">CONTACTO</a></li>
         </ul>
@@ -136,7 +148,7 @@
         <div class="feature-box">
           <img src="./media/icons/lado-del-camion.png" alt="envios" />
           <div>
-            <span class="feature-title">ENVIOS GRATIS</span> <br />
+            <span class="feature-title">ENVIOS A TODO EL PAIS</span> <br />
             <p>Pedidos</p>
           </div>
         </div>
@@ -187,6 +199,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="./script.js"></script>
+    <script src="./script.js" type="module"></script>
   </body>
 </html>

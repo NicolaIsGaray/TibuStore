@@ -1,28 +1,26 @@
 const mongoose = require("mongoose");
-const { type } = require("os");
 
 const productData = new mongoose.Schema ({
     nombre: {
         type: String,
-        require: true
+        required: true
     },
     descripcion: {
         type: String,
-        require:true
+        required:true
     },
     stock: {
         type: Number,
-        require: true,
+        required: true,
         min: [0, "Ingresa un valor válido."]
     },
     precio: {
         type: Number,
-        require: true
+        required: true
     },
     categoria: {
         type: String,
-        require: true,
-        enum: ['suplemento', 'vasosAndShakers', 'oferta']
+        required: true
     },
     imgPortada: {
         type: String

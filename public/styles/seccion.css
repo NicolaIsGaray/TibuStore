@@ -92,24 +92,6 @@
     transition: all .3s;
 }
 
-.subnavbar-desktop-li li > a:hover {
-    color: white;
-    transition: all .3s;
-}
-
-/* Mostrar la subnavbar al pasar el ratón por encima del elemento padre */
-.navbar-desktop-compo:hover .subnavbar-desktop-li,
-.navbar-desktop-compo:focus-within .subnavbar-desktop-li {
-    opacity: 1;
-    visibility: visible;
-}
-
-.subnavbar-desktop-li:hover {
-    opacity: 1;
-    visibility: visible;
-}
-
-
 .category-container {
     position: relative;
     left: 8vw;
@@ -215,6 +197,10 @@
     transform: scale(0.7);
 }
 
+.product-name {
+    width: 50%;
+    height: auto;
+}
 
 .buy-button {
     background-color: rgb(255, 193, 7);
