@@ -1,3 +1,27 @@
+async function verificarAccesoAdmin() {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+        alert("No tienes acceso. Por favor, inicia sesión.");
+        window.location.href = "../user/login.html"; // Redirigir a la página de login
+        return;
+    }
+
+    try {
+        const response = await axios.get("/usuario/admin-only", {
+            headers: { Authorization: `Bearer ${token}` }
+        });
+
+        console.log(response.data.message); // Mensaje de éxito
+    } catch (error) {
+        console.error("Acceso denegado:", error.response?.data?.message || error.message);
+        alert("Acceso denegado. No tienes permisos para ver esta página.");
+        window.location.href = "/"; // Redirigir a otra página
+    }
+}
+
+verificarAccesoAdmin();
+
 //Formatear el texto del precio
 const inputFieldPrice = document.getElementById('price');
 
