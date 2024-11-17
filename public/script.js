@@ -4,7 +4,6 @@ const getLogRegBtn = document.querySelector(".userOptions-container")
 
 window.onload = () => {
     obtenerAdminBtn.style.display = "none";
-    getLogRegBtn.style.display = "none"
 }
 
 async function obtenerRolUsuario() {
@@ -14,6 +13,8 @@ async function obtenerRolUsuario() {
         alert("No estás autenticado.");
         return;
     }
+
+
 
     try {
         // Hacer la solicitud para obtener el rol
@@ -27,6 +28,10 @@ async function obtenerRolUsuario() {
 
         const isAdmin = response.data.isAdmin; // Suponiendo que el backend te está enviando isAdmin como true/false
 
+        window.onload = () => {
+            getLogRegBtn.style.display = "none";  
+        } 
+        
         if (isAdmin) {
             console.log("El usuario es un administrador.");
             alert("Eres admin.")
